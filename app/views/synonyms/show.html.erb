@@ -1,0 +1,45 @@
+<div class="jumbotron">
+
+<p>
+  <strong>English word:</strong>
+  <%= @synonym.English_word %>
+</p>
+
+<p>
+  <strong>Kannada meaning:</strong>
+  <%= @synonym.Kannada_meaning %>
+</p>
+
+  <% @synonym.comments.each do |comment| %>
+<p>
+  <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_with model: [ @synonym, @synonym.comments.build ] do |form| %>
+  <p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+
+
+
+<%= link_to 'Edit', edit_synonym_path(@synonym) %> |
+<%= link_to 'Back', synonyms_path %>
+</div>

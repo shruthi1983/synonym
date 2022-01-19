@@ -1,0 +1,45 @@
+
+
+<div class="jumbotron">
+<h2>        
+<table class="table table-sm ">
+
+
+    <thead class="thead-light">
+    <tr >
+      
+      <th>English word</th></h2>
+     <h2> <th>Kannada meaning</th></h2>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+    
+      
+
+  <tbody>
+    <% @synonyms.each do |synonym| %>
+    
+      <h2 style="text-align:center;">
+      <tr>
+        <td><%= synonym.English_word %></td>
+        <td><%= synonym.Kannada_meaning %></td>
+        
+          
+      <td><span class ="like_count" <%=synonym.id %>> <%=synonym.get_upvotes.size%> </span>
+        <%= link_to 'like', like_synonym_path(synonym),class:"btn btn-success",method: :put  %></td>
+        <td><span class ="dislike_count" <%=synonym.id %>> <%=synonym.get_downvotes.size%></span>
+          <%= link_to 'unlike', unlike_synonym_path(synonym),class:"btn btn-danger",method: :put  %></td>
+        <td><%= link_to 'Show', synonym %></td>
+        <td><%= link_to 'Edit', edit_synonym_path(synonym) %></td>
+        <td><%= link_to 'Destroy', synonym, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if user_signed_in? %>
+<%= link_to 'New Synonym', new_synonym_path %>
+
+<% end %>

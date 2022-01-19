@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  English_word: MyText
+  Kannada_meaning: MyText
+
+two:
+  English_word: MyText
+  Kannada_meaning: MyText
